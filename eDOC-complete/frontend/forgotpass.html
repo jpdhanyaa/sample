@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eDOC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#d8dadb",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-high": "#e6e8e9",
+              "secondary-fixed-dim": "#b4cad6",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c3c6d6",
+              "on-primary-container": "#ccd8ff",
+              "on-secondary-fixed": "#071e27",
+              "secondary": "#4c616c",
+              "secondary-container": "#cfe6f2",
+              "inverse-primary": "#b2c5ff",
+              "background": "#f8fafb",
+              "tertiary-fixed": "#68fadd",
+              "surface-tint": "#0056d2",
+              "secondary-fixed": "#cfe6f2",
+              "on-primary-fixed-variant": "#0040a1",
+              "primary-fixed-dim": "#b2c5ff",
+              "tertiary": "#005145",
+              "tertiary-container": "#006b5c",
+              "outline": "#737785",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eceeef",
+              "primary-container": "#0056d2",
+              "on-tertiary-container": "#5cf0d4",
+              "primary-fixed": "#dae2ff",
+              "surface-bright": "#f8fafb",
+              "tertiary-fixed-dim": "#44ddc1",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#eff1f2",
+              "on-secondary-container": "#526772",
+              "surface-container-low": "#f2f4f5",
+              "on-error": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#424654",
+              "on-secondary-fixed-variant": "#354a53",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-background": "#191c1d",
+              "surface": "#f8fafb",
+              "on-surface": "#191c1d",
+              "on-tertiary-fixed-variant": "#005145",
+              "on-primary-fixed": "#001847",
+              "error-container": "#ffdad6",
+              "primary": "#0040a1",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#00201a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .brand-gradient {
+            background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background min-h-screen flex flex-col">
+<header class="fixed top-0 w-full z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg text-primary ml-2 font-bold" data-icon="medical_services">medical_services</span>
+<span class="text-xl font-bold tracking-tight text-blue-900 dark:text-blue-100 font-headline">eDOC</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="flex items-center gap-2 text-sm font-medium text-primary hover:underline" href="login.html">
+  <span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+  Back to Sign In
+</a>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+<div class="w-full max-w-md">
+<div class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary-container mb-6">
+<span class="material-symbols-outlined text-on-secondary-container text-3xl" data-icon="lock_reset">lock_reset</span>
+</div>
+<h1 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-3">Forgot Password?</h1>
+<p class="text-on-surface-variant text-base">No worries, it happens. Enter your email below and we'll send you a secure link to reset your account access.</p>
+</div>
+<div class="surface-container-lowest glass-panel rounded-xl p-8 border border-outline-variant/15 shadow-sm">
+<form class="space-y-6">
+<div>
+<label class="block text-sm font-semibold text-on-surface mb-2 font-label" for="email">Email Address</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-xl group-focus-within:text-primary transition-colors" data-icon="mail">mail</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-surface-container-low border-0 rounded-lg text-on-surface placeholder-outline focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all duration-200" id="email" name="email" placeholder="name@clinic.com" required="" type="email"/>
+</div>
+</div>
+<button type="submit"
+class="w-full brand-gradient text-on-primary font-bold py-3.5 px-6 rounded-xl shadow-lg">
+Send Reset Link 
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 pt-6 border-t border-outline-variant/10">
+<div class="flex flex-col gap-4 text-center">
+<p class="text-sm text-on-surface-variant">
+                            Remember your password? 
+                            <a class="text-primary font-bold hover:underline transition-all" href="login.html">Sign In</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full py-5 px-5 text-center">
+<p class="text-xs text-outline font-medium">© 2026 eDOC. All rights reserved. Professional Healthcare Portal.</p>
+</footer>
+<div class="fixed inset-0 -z-10 overflow-hidden">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-tertiary/5 rounded-full blur-[120px]"></div>
+</div>
+<script>
+const form = document.querySelector("form");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const email = document.getElementById("email").value.trim();  // ✅ IMPORTANT
+
+    fetch("http://localhost:3000/forgot-password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.status === "success"){
+            alert("Reset link sent (demo)");
+
+            localStorage.setItem("resetEmail", email);
+
+            window.location.href = "resetpass.html";
+        } else {
+            alert("Email not found");
+        }
+    });
+});
+</script>
+</body></html>

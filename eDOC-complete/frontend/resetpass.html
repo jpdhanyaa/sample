@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eDOC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-primary-fixed": "#001847",
+                        "inverse-primary": "#b2c5ff",
+                        "on-surface-variant": "#424654",
+                        "secondary-container": "#cfe6f2",
+                        "on-tertiary-fixed": "#00201a",
+                        "on-secondary-fixed": "#071e27",
+                        "on-background": "#191c1d",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e1e3e4",
+                        "tertiary": "#005145",
+                        "tertiary-fixed": "#68fadd",
+                        "primary-container": "#0056d2",
+                        "background": "#f8fafb",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e6e8e9",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "inverse-on-surface": "#eff1f2",
+                        "surface-tint": "#0056d2",
+                        "on-primary": "#ffffff",
+                        "surface-container": "#eceeef",
+                        "surface-dim": "#d8dadb",
+                        "on-secondary-container": "#526772",
+                        "primary": "#0040a1",
+                        "outline-variant": "#c3c6d6",
+                        "surface": "#f8fafb",
+                        "on-primary-container": "#ccd8ff",
+                        "tertiary-container": "#006b5c",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "on-surface": "#191c1d",
+                        "outline": "#737785",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-container": "#5cf0d4",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "secondary-fixed": "#cfe6f2",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-bright": "#f8fafb",
+                        "secondary": "#4c616c",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "tertiary-fixed-dim": "#44ddc1",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2ff",
+                        "on-error": "#ffffff",
+                        "surface-container-low": "#f2f4f5",
+                        "on-tertiary-fixed-variant": "#005145"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-clinical-gradient {
+            background: linear-gradient(135deg, #f8fafb 0%, #cfe6f2 100%);
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(to right, #0040a1, #0056d2);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface antialiased min-h-screen flex flex-col">
+<header class="w-full px-6 py-8 flex justify-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="health_and_safety">health_and_safety</span>
+<span class="font-headline font-extrabold text-2xl tracking-tight text-on-surface">eDOC</span>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center px-4 py-12">
+<div class="w-full max-w-md">
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_-4px_40px_rgba(25,28,29,0.04)] relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary-container/20 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="relative z-10">
+<div class="mb-8 text-center">
+<div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-secondary-container text-primary mb-4">
+<span class="material-symbols-outlined text-3xl" data-icon="lock_reset">lock_reset</span>
+</div>
+<h1 class="font-headline text-3xl font-bold text-on-surface tracking-tight mb-2">Reset Password</h1>
+<p class="text-on-secondary-container font-medium">Please enter your new credentials to secure your account.</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">
+New Password
+</label>
+<div class="relative">
+<span id="icon-new" class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">key</span>
+<input id="new_password"
+class="w-full pl-12 pr-12 py-3.5 bg-surface-container-lowest border rounded-xl"
+type="password" placeholder="••••••••"/>
+<button type="button" id="toggleNew"
+class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary">
+<span id="iconNew" class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="space-y-2">
+<label class="block text-sm font-semibold text-on-surface-variant ml-1">Confirm New Password</label>
+<div class="relative">
+<span id="icon-confirm" class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">verified_user</span>
+<input id="confirm_password"
+class="w-full pl-12 pr-12 py-3.5 bg-surface-container-lowest border rounded-xl"
+type="password" placeholder="••••••••"/>
+<button type="button" id="toggleConfirm"
+class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary">
+<span id="iconConfirm" class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-5 space-y-3">
+<h3 class="text-xs font-bold uppercase tracking-widest text-on-secondary-container/70 mb-1">Security Requirements</h3>
+<div class="grid grid-cols-1 gap-2">
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span id="icon-length" class="material-symbols-outlined text-lg">radio_button_unchecked</span>
+<span>At least 8 characters long</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span id="icon-number" class="material-symbols-outlined text-lg">radio_button_unchecked</span>
+<span>Includes at least one number</span>
+</div>
+<div class="flex items-center gap-3 text-sm text-on-surface-variant">
+<span id="icon-special" class="material-symbols-outlined text-lg">radio_button_unchecked</span>
+<span>Includes a special character (@, #, $)</span>
+</div>
+</div>
+</div>
+<button class="w-full btn-primary-gradient text-white font-headline font-bold py-4 rounded-xl shadow-lg shadow-primary/20 hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-2" type="submit">
+                            Update Password
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</form>
+<div class="mt-8 pt-6 border-t border-outline-variant/10 text-center">
+<a class="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline" href="login.html">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+                            Back to Login
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="w-full px-6 py-8 text-center">
+<div class="flex flex-col items-center gap-4">
+<div class="flex gap-6 text-sm font-medium text-on-surface-variant/60">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Safety Center</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Support</a>
+</div>
+<p class="text-xs text-outline/40">© 2026 eDOC. All rights reserved.</p>
+</div>
+</footer>
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-3 glass-panel px-6 py-4 rounded-full border border-outline-variant/20 shadow-xl opacity-0 translate-y-4 pointer-events-none">
+<span class="material-symbols-outlined text-tertiary" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-sm font-semibold text-on-surface">Password updated successfully</span>
+</div>
+<script>
+const form = document.querySelector("form");
+
+const newPass = document.getElementById("new_password");
+const confirmPass = document.getElementById("confirm_password");
+
+const iconNewEye = document.getElementById("iconNew");
+const iconConfirmEye = document.getElementById("iconConfirm");
+
+const iconNew = document.getElementById("icon-new");
+const iconConfirm = document.getElementById("icon-confirm");
+
+const iconLength = document.getElementById("icon-length");
+const iconNumber = document.getElementById("icon-number");
+const iconSpecial = document.getElementById("icon-special");
+
+document.getElementById("toggleNew").onclick = () => {
+    if (newPass.type === "password") {
+        newPass.type = "text";
+        iconNewEye.textContent = "visibility_off";
+    } else {
+        newPass.type = "password";
+        iconNewEye.textContent = "visibility";
+    }
+};
+
+document.getElementById("toggleConfirm").onclick = () => {
+    if (confirmPass.type === "password") {
+        confirmPass.type = "text";
+        iconConfirmEye.textContent = "visibility_off";
+    } else {
+        confirmPass.type = "password";
+        iconConfirmEye.textContent = "visibility";
+    }
+};
+
+function validatePassword() {
+    const value = newPass.value;
+
+    const hasLength = value.length >= 8;
+    const hasNumber = /[0-9]/.test(value);
+    const hasSpecial = /[@#$]/.test(value);
+
+    iconLength.textContent = hasLength ? "check_circle" : "radio_button_unchecked";
+    iconLength.style.color = hasLength ? "green" : "gray";
+
+    iconNumber.textContent = hasNumber ? "check_circle" : "radio_button_unchecked";
+    iconNumber.style.color = hasNumber ? "green" : "gray";
+
+    iconSpecial.textContent = hasSpecial ? "check_circle" : "radio_button_unchecked";
+    iconSpecial.style.color = hasSpecial ? "green" : "gray";
+
+    if (hasLength && hasNumber && hasSpecial) {
+        iconNew.textContent = "check_circle";
+        iconNew.style.color = "green";
+    } else {
+        iconNew.textContent = "key";
+        iconNew.style.color = "gray";
+    }
+
+    return hasLength && hasNumber && hasSpecial;
+}
+
+function checkMatch() {
+    const val1 = newPass.value;
+    const val2 = confirmPass.value;
+
+    if (val2 === "") {
+        iconConfirm.textContent = "verified_user";
+        iconConfirm.style.color = "gray";
+        return false;
+    }
+
+    if (val1 === val2) {
+        iconConfirm.textContent = "check_circle";
+        iconConfirm.style.color = "green";
+        return true;
+    } else {
+        iconConfirm.textContent = "cancel";
+        iconConfirm.style.color = "red";
+        return false;
+    }
+}
+
+newPass.addEventListener("input", () => {
+    validatePassword();
+    checkMatch();
+});
+
+confirmPass.addEventListener("input", checkMatch);
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const newPassword = newPass.value.trim();
+    const confirmPassword = confirmPass.value.trim();
+
+    const isValid = validatePassword();
+    const isMatch = checkMatch();
+
+    if (!isValid) {
+        alert("Password does not meet requirements");
+        return;
+    }
+
+    if (!isMatch) {
+        alert("Passwords do not match");
+        return;
+    }
+
+    const email = localStorage.getItem("resetEmail");
+
+    fetch("http://localhost:3000/reset-password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: email,
+            newPassword: newPassword
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.status === "success"){
+            alert("Password updated successfully");
+
+            localStorage.removeItem("resetEmail");
+
+            window.location.href = "login.html";
+        } else {
+            alert("Update failed");
+        }
+    });
+});
+</script>
+</body></html>

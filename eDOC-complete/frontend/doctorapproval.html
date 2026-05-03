@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Manage Appointments | eDOC Doctor</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#d8dadb",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e6e8e9",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary-container": "#ccd8ff",
+                        "on-secondary-fixed": "#071e27",
+                        "secondary": "#4c616c",
+                        "secondary-container": "#cfe6f2",
+                        "inverse-primary": "#b2c5ff",
+                        "background": "#f8fafb",
+                        "tertiary-fixed": "#68fadd",
+                        "surface-tint": "#0056d2",
+                        "secondary-fixed": "#cfe6f2",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "tertiary": "#005145",
+                        "tertiary-container": "#006b5c",
+                        "outline": "#737785",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceeef",
+                        "primary-container": "#0056d2",
+                        "on-tertiary-container": "#5cf0d4",
+                        "primary-fixed": "#dae2ff",
+                        "surface-bright": "#f8fafb",
+                        "tertiary-fixed-dim": "#44ddc1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-secondary-container": "#526772",
+                        "surface-container-low": "#f2f4f5",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#424654",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "surface": "#f8fafb",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed-variant": "#005145",
+                        "on-primary-fixed": "#001847",
+                        "error-container": "#ffdad6",
+                        "primary": "#0040a1",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#00201a"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
+        }
+        .status-badge {
+            @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold;
+        }
+        .status-booked {
+            @apply bg-blue-100 text-blue-700;
+        }
+        .status-approved {
+            @apply bg-green-100 text-green-700;
+        }
+        .status-completed {
+            @apply bg-gray-100 text-gray-700;
+        }
+        .status-cancelled {
+            @apply bg-red-100 text-red-700;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background">
+<div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-surface-container-low shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-primary font-headline font-extrabold text-2xl">eDOC</span>
+                <span class="text-on-surface-variant text-sm">Doctor Portal</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-sm text-on-surface-variant">Dr. <span id="doctorName">User</span></span>
+                <button onclick="logout()" class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+                    <span class="material-symbols-outlined">logout</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+        <!-- Page Title -->
+        <div class="mb-8">
+            <h1 class="font-headline text-3xl font-bold text-on-surface mb-2">Appointment Management</h1>
+            <p class="text-on-surface-variant">Review and manage patient appointment requests</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="flex gap-4 mb-8 flex-wrap">
+            <button onclick="filterAppointments('all')" class="filter-btn active px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-filter="all">
+                All Appointments
+            </button>
+            <button onclick="filterAppointments('Booked')" class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-filter="Booked">
+                <span class="material-symbols-outlined text-base align-middle mr-1">schedule</span>Pending
+            </button>
+            <button onclick="filterAppointments('Approved')" class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-filter="Approved">
+                <span class="material-symbols-outlined text-base align-middle mr-1">check_circle</span>Approved
+            </button>
+            <button onclick="filterAppointments('Completed')" class="filter-btn px-4 py-2 rounded-lg font-semibold text-sm transition-all" data-filter="Completed">
+                <span class="material-symbols-outlined text-base align-middle mr-1">done_all</span>Completed
+            </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/10">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-on-surface-variant font-semibold">Total Appointments</p>
+                        <p class="text-2xl font-bold text-on-surface" id="totalAppts">0</p>
+                    </div>
+                    <span class="material-symbols-outlined text-primary text-3xl">calendar_today</span>
+                </div>
+            </div>
+            <div class="bg-blue-50 rounded-xl p-6 border border-blue-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-blue-700 font-semibold">Pending</p>
+                        <p class="text-2xl font-bold text-blue-900" id="pendingAppts">0</p>
+                    </div>
+                    <span class="material-symbols-outlined text-blue-700 text-3xl">pending_actions</span>
+                </div>
+            </div>
+            <div class="bg-green-50 rounded-xl p-6 border border-green-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-green-700 font-semibold">Approved</p>
+                        <p class="text-2xl font-bold text-green-900" id="approvedAppts">0</p>
+                    </div>
+                    <span class="material-symbols-outlined text-green-700 text-3xl">check_circle</span>
+                </div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-gray-700 font-semibold">Completed</p>
+                        <p class="text-2xl font-bold text-gray-900" id="completedAppts">0</p>
+                    </div>
+                    <span class="material-symbols-outlined text-gray-700 text-3xl">done_all</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointments Table -->
+        <div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden border border-outline-variant/10">
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-outline-variant/20 bg-surface-container">
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Patient Name</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Email</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Date & Time</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Session Type</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Status</th>
+                            <th class="px-6 py-4 text-left text-sm font-semibold text-on-surface">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointmentsList" class="divide-y divide-outline-variant/10">
+                        <tr class="text-center py-8">
+                            <td colspan="6" class="px-6 py-8 text-on-surface-variant">Loading appointments...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- Action Modal -->
+<div id="actionModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+    <div class="bg-surface-container-lowest rounded-2xl max-w-md w-full p-6">
+        <h3 class="font-headline text-xl font-bold text-on-surface mb-4" id="modalTitle">Update Appointment</h3>
+        <p class="text-on-surface-variant mb-6" id="modalMessage">Are you sure you want to update this appointment?</p>
+        <div class="flex gap-3">
+            <button onclick="closeModal()" class="flex-1 py-2 px-4 rounded-xl border border-outline-variant/30 text-on-surface-variant font-semibold hover:bg-surface-container-low transition-colors">
+                Cancel
+            </button>
+            <button onclick="confirmAction()" class="flex-1 py-2 px-4 rounded-xl primary-gradient text-white font-semibold hover:shadow-lg transition-all">
+                Confirm
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user || user.role !== "doctor") {
+    alert("Unauthorized access");
+    window.location.href = "login.html";
+}
+
+document.getElementById("doctorName").textContent = user.first_name;
+
+let appointments = [];
+let currentFilter = "all";
+let pendingAction = null;
+
+// Load appointments on page load
+window.addEventListener("DOMContentLoaded", loadAppointments);
+
+async function loadAppointments() {
+    try {
+        const response = await fetch(`http://localhost:3000/doctor/${user.id}`);
+        const data = await response.json();
+        
+        appointments = data.appointments || [];
+        updateStats();
+        displayAppointments();
+    } catch (error) {
+        console.error("Error loading appointments:", error);
+        document.getElementById("appointmentsList").innerHTML = `<tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">Error loading appointments</td></tr>`;
+    }
+}
+
+function updateStats() {
+    const total = appointments.length;
+    const pending = appointments.filter(a => a.status === "Booked").length;
+    const approved = appointments.filter(a => a.status === "Approved").length;
+    const completed = appointments.filter(a => a.status === "Completed").length;
+
+    document.getElementById("totalAppts").textContent = total;
+    document.getElementById("pendingAppts").textContent = pending;
+    document.getElementById("approvedAppts").textContent = approved;
+    document.getElementById("completedAppts").textContent = completed;
+}
+
+function displayAppointments() {
+    const filtered = currentFilter === "all" 
+        ? appointments 
+        : appointments.filter(a => a.status === currentFilter);
+
+    if (filtered.length === 0) {
+        document.getElementById("appointmentsList").innerHTML = `<tr><td colspan="6" class="px-6 py-8 text-center text-on-surface-variant">No appointments found</td></tr>`;
+        return;
+    }
+
+    document.getElementById("appointmentsList").innerHTML = filtered.map(appt => `
+        <tr class="hover:bg-surface-container-low transition-colors">
+            <td class="px-6 py-4 text-sm font-medium text-on-surface">${appt.patient_name || 'N/A'}</td>
+            <td class="px-6 py-4 text-sm text-on-surface-variant">${appt.patient_email || 'N/A'}</td>
+            <td class="px-6 py-4 text-sm text-on-surface">
+                ${new Date(appt.date).toLocaleDateString()} at ${appt.time || appt.time_slot}
+            </td>
+            <td class="px-6 py-4 text-sm">
+                <span class="inline-flex items-center gap-1">
+                    <span class="material-symbols-outlined text-base">${appt.session === 'Video' ? 'videocam' : 'chat'}</span>
+                    ${appt.session || 'Video'}
+                </span>
+            </td>
+            <td class="px-6 py-4 text-sm">
+                <span class="status-badge status-${appt.status.toLowerCase()}">
+                    ${appt.status}
+                </span>
+            </td>
+            <td class="px-6 py-4 text-sm">
+                <div class="flex gap-2">
+                    ${appt.status === 'Booked' ? `
+                        <button onclick="openActionModal(${appt.id}, 'Approved')" class="px-3 py-1.5 bg-green-100 text-green-700 rounded-lg hover:bg-green-200 transition-colors text-xs font-semibold">
+                            <span class="material-symbols-outlined text-base align-middle">check</span> Approve
+                        </button>
+                        <button onclick="openActionModal(${appt.id}, 'Cancelled')" class="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors text-xs font-semibold">
+                            <span class="material-symbols-outlined text-base align-middle">close</span> Reject
+                        </button>
+                    ` : appt.status === 'Approved' ? `
+                        <button onclick="openActionModal(${appt.id}, 'Completed')" class="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors text-xs font-semibold">
+                            <span class="material-symbols-outlined text-base align-middle">done</span> Complete
+                        </button>
+                    ` : `
+                        <span class="text-xs text-on-surface-variant">No actions</span>
+                    `}
+                </div>
+            </td>
+        </tr>
+    `).join("");
+}
+
+function filterAppointments(status) {
+    currentFilter = status;
+    document.querySelectorAll(".filter-btn").forEach(btn => btn.classList.remove("active"));
+    event.target.classList.add("active");
+    displayAppointments();
+}
+
+function openActionModal(appointmentId, newStatus) {
+    pendingAction = { appointmentId, newStatus };
+    
+    const statusMessages = {
+        "Approved": "This appointment will be approved and the patient will be notified.",
+        "Cancelled": "This appointment will be rejected and the patient will be notified.",
+        "Completed": "Mark this appointment as completed?"
+    };
+
+    document.getElementById("modalTitle").textContent = newStatus === "Approved" ? "Approve Appointment" : newStatus === "Cancelled" ? "Reject Appointment" : "Complete Appointment";
+    document.getElementById("modalMessage").textContent = statusMessages[newStatus];
+    document.getElementById("actionModal").classList.remove("hidden");
+}
+
+function closeModal() {
+    document.getElementById("actionModal").classList.add("hidden");
+    pendingAction = null;
+}
+
+async function confirmAction() {
+    if (!pendingAction) return;
+
+    try {
+        const response = await fetch("http://localhost:3000/update-status", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                id: pendingAction.appointmentId,
+                status: pendingAction.newStatus
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.status === "success") {
+            alert(`Appointment ${pendingAction.newStatus.toLowerCase()} successfully!`);
+            closeModal();
+            loadAppointments();
+        } else {
+            alert("Error updating appointment");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error updating appointment");
+    }
+}
+
+function logout() {
+    localStorage.removeItem("user");
+    window.location.href = "login.html";
+}
+
+// Close modal when clicking outside
+document.getElementById("actionModal").addEventListener("click", function(e) {
+    if (e.target === this) {
+        closeModal();
+    }
+});
+</script>
+</body>
+</html>

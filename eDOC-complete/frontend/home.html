@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eDOC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#d8dadb",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-high": "#e6e8e9",
+              "secondary-fixed-dim": "#b4cad6",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c3c6d6",
+              "on-primary-container": "#ccd8ff",
+              "on-secondary-fixed": "#071e27",
+              "secondary": "#4c616c",
+              "secondary-container": "#cfe6f2",
+              "inverse-primary": "#b2c5ff",
+              "background": "#f8fafb",
+              "tertiary-fixed": "#68fadd",
+              "surface-tint": "#0056d2",
+              "secondary-fixed": "#cfe6f2",
+              "on-primary-fixed-variant": "#0040a1",
+              "primary-fixed-dim": "#b2c5ff",
+              "tertiary": "#005145",
+              "tertiary-container": "#006b5c",
+              "outline": "#737785",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eceeef",
+              "primary-container": "#0056d2",
+              "on-tertiary-container": "#5cf0d4",
+              "primary-fixed": "#dae2ff",
+              "surface-bright": "#f8fafb",
+              "tertiary-fixed-dim": "#44ddc1",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#eff1f2",
+              "on-secondary-container": "#526772",
+              "surface-container-low": "#f2f4f5",
+              "on-error": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#424654",
+              "on-secondary-fixed-variant": "#354a53",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-background": "#191c1d",
+              "surface": "#f8fafb",
+              "on-surface": "#191c1d",
+              "on-tertiary-fixed-variant": "#005145",
+              "on-primary-fixed": "#001847",
+              "error-container": "#ffdad6",
+              "primary": "#0040a1",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#00201a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+        }
+        @media (max-width: 768px) {
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<header class="fixed top-0 w-full z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<a class="text-xl font-bold tracking-tight text-blue-900 dark:text-blue-100 font-headline" href="#">TeleHealth Pulse</a>
+</div>
+<div class="flex items-center gap-4">
+    <a href="login.html">
+        <button class="bg-primary hover:bg-primary-container text-white px-6 py-2.5 rounded-full font-semibold transition-all shadow-md active:scale-95 duration-200 flex items-center gap-2">
+            <span class="material-symbols-outlined">login</span>
+            <span>LOGIN</span>
+        </button>
+    </a>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<section class="relative px-6 py-20 md:py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto asymmetric-grid gap-12 items-center">
+<div class="space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary-container text-on-secondary-container">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-tertiary"></span>
+</span>
+<span class="text-xs font-bold tracking-widest uppercase font-label">2,400+ Doctors Active Now</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tight text-on-background leading-tight">
+                        Clinical Precision, <span class="text-primary italic">Serene Care.</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                        Experience a premium healthcare portal designed for modern life. Connect with world-class specialists in minutes through our secure, encrypted platform.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+    <a href="booking.html">
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-8 py-4 rounded-xl text-lg font-bold shadow-xl hover:shadow-primary/20 transition-all active:scale-95">
+                            Book a Consultation
+                        </button>
+                        </a>
+<button class="flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-lg font-semibold text-primary bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+                            How it Works
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-8">
+<div class="flex -space-x-3">
+<img class="h-12 w-12 rounded-full border-4 border-background object-cover" data-alt="portrait of a professional female doctor smiling with a warm clinical background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyCjzbMxWvVVbHbKotCh0LJvwCiKxXVI-IibTDCAylwAYrCDmHUaPctLw1mY71s-IXvMIGGeQ51d6o3f25gJE32gpS2Z5TPu4OxKx2apRc0XORUo1XjK8IYV3rWbMIbZBjQOfyH3BWz7KK8hYcCxbH9O_9TK2cjvKVnLak9t4YDHAKY2hnwzUYXQFvXiNCrjvEab_ah9_jthzuXIBjmaL6BC0MUWFxmJsH1FtE9jaWonHtxtEoeFsSOT40PXBOLXBQgH6BFwjmTqp9"/>
+<img class="h-12 w-12 rounded-full border-4 border-background object-cover" data-alt="close-up of a diverse male physician with a kind expression and white coat" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArewMNNq8RMupRPyHxn5nVUrwgkb-NyUOKHHsujwa6DcOroE3YnB08FDvHChTmEEZMjaIqvw1zNIrjCJaa2a1aRBuPlMBgR8TUh4pJ8tIzQCkAmwgJdlE4p_Rd8zRYuRgNX13ecMG2QjbgYHHmKSpl3fVyZD25P5Dc1iH-aPmYaBbBOuHEpX_xW8Uil7zyUui_jk-Aq_aWyW5xYvLlYfq52FZptcWwRWYGS3JIXwHS7Z93vEIgJ9-zgbUO43q_tvbtAF-BfUIADpKI"/>
+<img class="h-12 w-12 rounded-full border-4 border-background object-cover" data-alt="professional medical specialist looking confidently at the camera in a modern clinic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLFYiDcpLsHOQ9ecGdddLrzhd304zNuYRVK1oFVd-qEWLiHY0DUGPNU_sfyEitOeW_B-vSUogbrofPYkzgIhnEFc6vTespLTPYjdToL5RrJVyWeC8t3ac24wbIcYF131yDIc1zaIYG1FMUNzQt9a17qFBHLRxx4KCdXQqs5wKLHD0Is4qBkevGHJqtFmdjA4Vv2Bv3xYxePMTda3wrR42j-ZtjdO2WIJN6jBK83uvZpicQfSLjBOpjwRU33P0pjTSpukndMVVcrTHt"/>
+</div>
+<p class="text-sm font-medium text-on-surface-variant">Trusted by <span class="font-bold text-on-background">50,000+</span> patients monthly</p>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-20 -right-20 w-96 h-96 bg-primary-fixed-dim/30 rounded-full blur-[100px] -z-10"></div>
+<div class="rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500">
+<img class="w-full h-[600px] object-cover" data-alt="high-end editorial shot of a doctor using a modern tablet in a sunlit architectural clinic setting with soft shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYidCGEK_fOV9E2TzuJKu88eESDj2WCAcndt8pazmGmN1Snj-5e8NfT4LDooRO6TtYC8pj_MyniShiwpl6nxe6jo2Lkowr8Opcp-7qlseIkx_-bVS_t0bJernB-foD3fjjzs0NDe_hiWg-0a-Yw672RqBlbbBGA_0bCsbWWwoMGWZmf1rZyIrYLTd8i9EDen3PCWEqw_vVxOn5oju34w1dNCkyOuv_ilqPrP-Fgb0Voyy7tThnDvn04hHNX2gISlsBtNfTS8_lPCPH"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-surface-container-lowest p-6 rounded-2xl shadow-xl flex items-center gap-4 max-w-xs">
+<div class="h-12 w-12 rounded-full bg-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<p class="font-bold text-sm">HIPAA Certified</p>
+<p class="text-xs text-on-surface-variant">Full medical-grade encryption</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 bg-surface-container-low px-6" id="features">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16 space-y-4">
+<h2 class="text-4xl md:text-5xl font-headline font-bold text-on-background">Modern Healthcare <span class="text-primary">Redefined</span></h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto text-lg">We've removed the barriers between you and your health. Precision care meets unparalleled convenience.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all flex flex-col justify-between overflow-hidden relative group">
+<div class="z-10">
+<span class="material-symbols-outlined text-primary text-4xl mb-6" data-icon="calendar_month">calendar_month</span>
+<h3 class="text-2xl font-bold mb-4 font-headline">Instant Booking</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-md">No more waiting rooms. Schedule your consultation in under 60 seconds with our smart availability engine.</p>
+</div>
+<img class="absolute bottom-0 right-0 w-64 h-64 object-cover rounded-tl-[4rem] transition-transform group-hover:scale-105 duration-500" data-alt="minimalist view of a person using a sleek smartphone for booking an appointment in a clean bright room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkewhBZhjrlwi1C8YdvA0IOrEG8460DzeIfBYpvg0IwMvWkTCZUW4NgNR5pg_Tl-ywGRUooxFztCYqcjP9nJoUfJm_2N80j14jMVci01z6K17XjnxcohbGX41EtgCA-hiF23hAgR96F8ff4Kaa8o5olLDR0QAAYydbHjHDH7unj4oSUVu9qv803du8LwnYvPQm3H-Esxg-Lf4qgU4lPMjA5Pz9WDwKZhuNYdIi04GJWrQbDLGI6QJWzbpNx3h-9YfyBueUWikhcusX"/>
+</div>
+<div class="bg-primary text-white p-8 rounded-[2rem] shadow-lg flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-6xl mb-6" data-icon="videocam" data-weight="fill">videocam</span>
+<h3 class="text-2xl font-bold mb-4 font-headline">HD Consultations</h3>
+<p class="text-primary-fixed-dim leading-relaxed">Crystal clear audio and video quality ensures your doctor doesn't miss a single detail.</p>
+</div>
+<div class="bg-tertiary text-white p-8 rounded-[2rem] shadow-lg flex flex-col items-start">
+<span class="material-symbols-outlined text-4xl mb-6" data-icon="shield_lock">shield_lock</span>
+<h3 class="text-2xl font-bold mb-4 font-headline">Privacy First</h3>
+<p class="text-tertiary-fixed leading-relaxed">Your data belongs to you. We use end-to-end encryption for all medical records and sessions.</p>
+</div>
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-[2rem] shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-8 items-center">
+<img class="w-full md:w-1/2 h-64 object-cover rounded-2xl" data-alt="macro shot of modern medical diagnostic laboratory equipment with blue neon light accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLis8JLj84ZD5fiDk-XgQDWuPf2sIQJJWjsuMqCU_HTmyzDeDaqmS5faSUhNAhZKfJV3QYtr4QCrXcCInh0rC5v4ObpaRmPCzqxe6KfE10GPMn9f7y1IVZ8o8FZD9uo7q12yEtAUoxz3ZGvL22BT_u-zzjasEZxlEjUaUf2mLEp1hEY_TdbkQObbmWTyn2MkIPBmhtmwCgsognogvWXpG3-wp1CJ_mpppRmMJuesqSiYdHZZfONBd6Pct8v4l-kQuc-dwEyd0_LeQK"/>
+<div>
+<h3 class="text-2xl font-bold mb-4 font-headline">AI-Powered Insights</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">Get preliminary health summaries and symptom tracking powered by our empathetic medical AI.</p>
+<button class="mt-6 text-primary font-bold flex items-center gap-2 hover:gap-4 transition-all">
+                                Learn about Pulse AI <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-6" id="doctors">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="space-y-4">
+<h2 class="text-4xl font-headline font-bold text-on-background">World-Class Expertise</h2>
+<p class="text-on-surface-variant text-lg">Meet the specialists leading the digital health revolution.</p>
+</div>
+<button class="px-6 py-3 border border-outline-variant rounded-full font-bold hover:bg-surface-container-low transition-colors">
+                        View All Specialists
+                    </button>
+</div>
+<div id="doctorContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+</div>
+</section>
+</main>
+<div class="mt-6 pt-6 pb-6 border-t border-slate-100 dark:border-slate-900 text-center">
+  <p class="text-sm text-slate-500 mb-1">
+    &copy; <span id="year">2024</span> TeleHealth Pulse. All rights reserved.
+  </p>
+  <div class="flex justify-center gap-3 text-xs text-slate-400">
+    <span class="hover:text-primary cursor-pointer">Privacy</span>
+    <span class="hover:text-primary cursor-pointer">Terms</span>
+    <span class="hover:text-primary cursor-pointer">Support</span>
+  </div>
+</div>
+<script>
+const doctors = [
+{
+name: "Dr. Marcus Chen",
+specialization: "Cardiology Specialist",
+rating: "4.9",
+desc: "Expert in hypertension and preventive heart care with 15+ years experience.",
+img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCdmTFxgekwr83y2ea-4sa0xz38-DsndpE3buqSb_GhkOBJE0Trj3TOIT3DBV6bShzmwsWEw_HGnpGZh2CtuLq0lzdiNdy86aAXCVFiXr0uUuhoxkiRQROYL6FJ2Xrp1_x87q_VNRSSeZrmSQ54xeSfVfViB9vignDAiSSn6AWYHS4qiC1IKhirV3tSz4huEquA5oI9At8MRkBGQLJYicvwWDEheANn0PsLXTs5ZtkhGno43FKKkEvbN9RWsTwdKbxXXfq6BtD8nV__"
+},
+{
+name: "Dr. Sarah Jenkins",
+specialization: "Pediatrics",
+rating: "5.0",
+desc: "Focused on holistic child development and adolescent mental wellbeing.",
+img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBGyx6LVkUS9aK1BG5xOeeqViuCiz5EdW5UcX_WTUZ92eI60bh1eIBpW2Cjjb8_-bjI1n4DbQ0o4Xe1uGBvWq_oLo24Kgd9mlDHfxpL_Br8GNeP2Of2F5djeEDG76KUOmCfB59AcbA1O8iwoJmrvokZKdXFvU470TJKtQA1rNE-2hjfJO7nimnANDK6vhPZLOgUvXnJ5WJvhADUKy1AaxMQACIkk9CkGnoSGtCt-n_O9g6I1_sPY5MJ4Wzgq4XSmwk-YkZb_lRTQd0t"
+},
+{
+name: "Dr. Elena Rodriguez",
+specialization: "Dermatology",
+rating: "4.8",
+desc: "Specializing in tele-dermatology and advanced skin regenerative therapies.",
+img: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCgT1zRDXTOMZyvtdQ5JIOKISAl8ZnqjdaNmg8Oi90FiM7Rfyv-43h65u_iWYSg4jCvC_KXI18y_HjALQ0L2IUYlwMRiuRLpSZ5Xf1-bJeR-PyFmobpZjwTT2ogGIaURH5RyGKMjjDcKDg89d4IS5UBHzZSAqd7QXjzzDf7XED3Rv8B__6-IoY8u7bWXYACc_5rfflEgpiVz2DRbabqiRI8-76Ct-Td6uJDZdnX_Z9UGh08nJfQo9Ht0AE0zdDvLPERJXdi5XOmnR-"
+},
+{
+name: "Dr. Julian Vance",
+specialization: "Psychiatry",
+rating: "4.9",
+desc: "Committed to accessible mental health support and cognitive therapy.",
+img: "https://lh3.googleusercontent.com/aida-public/AB6AXuBuIHbSBKmryGl07E_F8F83zjgpEhWl-K1HqCXiTxOpN5tX7Xo7yk7h_5aQztas1tA7zphXkyTeKHJnF12D97XJKA-lNk7Fix_NEj4rrkMWng1L3PBrRqglRASxsJZA8Ve7cBeEMCdT-S3fYlEhsLdyG88dla4G1Nca4NVsze9SrLInrW_tF_C7xKoA0bEncChkOARA6SVDlxAtmKUIWS27mzMLCdVqMeyCUfcQ3Wm5OAt4qCU3DcCx2Kum_RH12t2bjXOSAd-e2YMv"
+}
+];
+
+ document.addEventListener("DOMContentLoaded", function(){
+ const yearEl = document.getElementById("year");
+ if (yearEl) yearEl.innerText = new Date().getFullYear();
+
+ const container = document.getElementById("doctorContainer");
+
+if(!container){
+console.error("doctorContainer not found");
+return;
+}
+
+container.innerHTML = "";
+
+for(let i=0;i<doctors.length;i++){
+let d = doctors[i];
+
+let card = document.createElement("div");
+card.className = "group";
+
+card.innerHTML = `
+<div class="relative rounded-3xl overflow-hidden mb-4 aspect-[4/5]">
+<img src="${d.img}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm">star</span>
+<span class="text-xs font-bold text-on-background">${d.rating}</span>
+</div>
+</div>
+<h4 class="text-xl font-bold font-headline">${d.name}</h4>
+<p class="text-primary font-medium text-sm mb-2">${d.specialization}</p>
+<p class="text-on-surface-variant text-xs leading-relaxed">${d.desc}</p>
+`;
+
+container.appendChild(card);
+}
+
+});
+</script>
+</body></html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register | TeleHealth Pulse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#d8dadb",
+              "surface-container-highest": "#e1e3e4",
+              "surface-container-high": "#e6e8e9",
+              "secondary-fixed-dim": "#b4cad6",
+              "on-secondary": "#ffffff",
+              "outline-variant": "#c3c6d6",
+              "on-primary-container": "#ccd8ff",
+              "on-secondary-fixed": "#071e27",
+              "secondary": "#4c616c",
+              "secondary-container": "#cfe6f2",
+              "inverse-primary": "#b2c5ff",
+              "background": "#f8fafb",
+              "tertiary-fixed": "#68fadd",
+              "surface-tint": "#0056d2",
+              "secondary-fixed": "#cfe6f2",
+              "on-primary-fixed-variant": "#0040a1",
+              "primary-fixed-dim": "#b2c5ff",
+              "tertiary": "#005145",
+              "tertiary-container": "#006b5c",
+              "outline": "#737785",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eceeef",
+              "primary-container": "#0056d2",
+              "on-tertiary-container": "#5cf0d4",
+              "primary-fixed": "#dae2ff",
+              "surface-bright": "#f8fafb",
+              "tertiary-fixed-dim": "#44ddc1",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#eff1f2",
+              "on-secondary-container": "#526772",
+              "surface-container-low": "#f2f4f5",
+              "on-error": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#424654",
+              "on-secondary-fixed-variant": "#354a53",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#2e3132",
+              "on-background": "#191c1d",
+              "surface": "#f8fafb",
+              "on-surface": "#191c1d",
+              "on-tertiary-fixed-variant": "#005145",
+              "on-primary-fixed": "#001847",
+              "error-container": "#ffdad6",
+              "primary": "#0040a1",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed": "#00201a"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.8);
+      }
+      .primary-gradient {
+        background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased selection:bg-primary/20">
+<main class="min-h-screen flex flex-col md:flex-row">
+<aside class="hidden lg:flex lg:w-1/3 xl:w-2/5 primary-gradient relative overflow-hidden flex-col justify-between p-12 text-white">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-16">
+<div class="bg-white/20 p-2 rounded-xl backdrop-blur-md">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">pulse_alert</span>
+</div>
+<span class="font-headline text-2xl font-bold tracking-tight">TeleHealth Pulse</span>
+</div>
+<h1 class="font-headline text-5xl font-extrabold tracking-tight leading-[1.1] mb-6">
+                    Join the future of <span class="text-tertiary-fixed">clinical precision.</span>
+</h1>
+<p class="text-on-primary-container text-lg max-w-md font-medium leading-relaxed opacity-90">
+                    Experience a healthcare ecosystem built on trust, efficiency, and empathetic care. Start your journey with eDOC today.
+                </p>
+</div>
+<div class="absolute -bottom-20 -right-20 w-80 h-80 bg-tertiary/20 rounded-full blur-[100px]"></div>
+<div class="absolute top-1/2 -left-20 w-64 h-64 bg-blue-400/20 rounded-full blur-[80px]"></div>
+</aside>
+<section class="flex-1 flex flex-col items-center justify-center p-6 md:p-12 lg:p-20 bg-surface no-scrollbar">
+<div class="w-full max-w-xl">
+<header class="mb-10">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline text-3xl font-extrabold text-on-background tracking-tight">Create your account</h2>
+</div>
+<a class="text-sm font-semibold text-primary hover:underline underline-offset-4" href="login.html">Already have an account?</a>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
+<label class="group relative cursor-pointer">
+<input checked="" class="peer sr-only" name="role" type="radio" value="patient"/>
+<div class="h-full p-6 bg-surface-container-lowest border border-outline-variant/15 rounded-xl transition-all duration-300 peer-checked:ring-2 peer-checked:ring-primary peer-checked:bg-primary/5">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">person</span>
+<p class="font-headline font-bold text-lg text-on-background mb-1">I am a Patient</p>
+<p class="text-on-secondary-container text-xs leading-relaxed">Book appointments, view records, and message your care team.</p>
+</div>
+</div>
+<div class="absolute top-4 right-4 opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+</div>
+</label>
+<label class="group relative cursor-pointer">
+<input class="peer sr-only" name="role" type="radio" value="doctor"/>
+<div class="h-full p-6 bg-surface-container-lowest border border-outline-variant/15 rounded-xl transition-all duration-300 peer-checked:ring-2 peer-checked:ring-primary peer-checked:bg-primary/5">
+<div class="flex flex-col h-full">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl group-hover:scale-110 transition-transform" style="font-variation-settings: 'FILL' 1;">medical_services</span>
+<p class="font-headline font-bold text-lg text-on-background mb-1">I am a Doctor</p>
+<p class="text-on-secondary-container text-xs leading-relaxed">Manage patients, digital consultations, and practice analytics.</p>
+</div>
+</div>
+<div class="absolute top-4 right-4 opacity-0 peer-checked:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+</div>
+</label>
+</div>
+<form id="signupForm" class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">First Name</label>
+<input id="firstName" class="w-full bg-surface-container-lowest border-outline-variant/15 rounded-xl px-4 py-3 text-on-background focus:ring-primary focus:border-primary transition-all duration-200" placeholder="John" type="text" required/>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Last Name</label>
+<input id="lastName" class="w-full bg-surface-container-lowest border-outline-variant/15 rounded-xl px-4 py-3 text-on-background focus:ring-primary focus:border-primary transition-all duration-200" placeholder="Doe" type="text" required/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Email Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl">mail</span>
+<input id="email" class="w-full bg-surface-container-lowest border-outline-variant/15 rounded-xl pl-12 pr-4 py-3 text-on-background focus:ring-primary focus:border-primary transition-all duration-200" placeholder="you@example.com" type="email" required/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-semibold text-on-surface-variant ml-1">Create Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-xl">lock</span>
+<input id="password"
+class="w-full pl-12 pr-12 py-3 rounded-xl bg-surface-container-lowest border-outline-variant/15 focus:ring-primary focus:border-primary"
+type="password"
+placeholder="At least 8 characters" required/>
+<button id="togglePassword"
+type="button"
+class="absolute right-4 top-1/2 -translate-y-1/2 text-outline hover:text-primary">
+<span id="eyeIcon" class="material-symbols-outlined text-xl">
+visibility
+</span>
+</button>
+</div>
+</div>
+<div class="flex items-start gap-3 pt-2">
+<input class="mt-1 rounded border-outline-variant/30 text-primary focus:ring-primary" id="terms" type="checkbox" required/>
+<label class="text-xs text-on-secondary-container leading-relaxed" for="terms">
+                            I agree to the <a class="text-primary font-bold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a>
+                        </label>
+</div>
+<div class="pt-6 flex items-center justify-between gap-4">
+<button class="text-on-surface-variant font-bold px-6 py-4 hover:text-primary transition-colors flex items-center gap-2" type="button">
+                            Cancel
+                        </button>
+<button type="submit" class="primary-gradient text-white font-headline font-bold px-10 py-4 rounded-xl shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center gap-2">
+                            Create Account
+                            <span class="material-symbols-outlined text-xl">arrow_forward</span>
+</button>
+</div>
+</form>
+<footer class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-outline font-medium">
+</footer>
+</div>
+</section>
+</main>
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] opacity-30">
+<div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-fixed blur-[120px] rounded-full"></div>
+<div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-tertiary-fixed blur-[120px] rounded-full"></div>
+</div>
+<script>
+const form = document.getElementById("signupForm");
+
+form.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName").value.trim();
+    const lastName = document.getElementById("lastName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const role = document.querySelector('input[name="role"]:checked').value;
+
+    if(!firstName || !lastName || !email || !password){
+        alert("Fill all fields");
+        return;
+    }
+
+    fetch("http://localhost:3000/signup", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            firstName,
+            lastName,
+            email,
+            password,
+            role
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.status === "success"){
+            alert("Account created successfully");
+            window.location.href = "login.html";
+        } else {
+            alert("User already exists");
+        }
+    });
+});
+</script>
+<script>
+const passwordInput = document.getElementById("password");
+const toggleBtn = document.getElementById("togglePassword");
+const eyeIcon = document.getElementById("eyeIcon");
+
+toggleBtn.addEventListener("click", function () {
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.textContent = "visibility_off";
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.textContent = "visibility";
+    }
+});
+</script>
+</body></html>

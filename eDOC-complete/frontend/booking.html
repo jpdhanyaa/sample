@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Book Appointment | eDOC</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-dim": "#d8dadb",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-container-high": "#e6e8e9",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c3c6d6",
+                        "on-primary-container": "#ccd8ff",
+                        "on-secondary-fixed": "#071e27",
+                        "secondary": "#4c616c",
+                        "secondary-container": "#cfe6f2",
+                        "inverse-primary": "#b2c5ff",
+                        "background": "#f8fafb",
+                        "tertiary-fixed": "#68fadd",
+                        "surface-tint": "#0056d2",
+                        "secondary-fixed": "#cfe6f2",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "tertiary": "#005145",
+                        "tertiary-container": "#006b5c",
+                        "outline": "#737785",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceeef",
+                        "primary-container": "#0056d2",
+                        "on-tertiary-container": "#5cf0d4",
+                        "primary-fixed": "#dae2ff",
+                        "surface-bright": "#f8fafb",
+                        "tertiary-fixed-dim": "#44ddc1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f2",
+                        "on-secondary-container": "#526772",
+                        "surface-container-low": "#f2f4f5",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#424654",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "surface-variant": "#e1e3e4",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-background": "#191c1d",
+                        "surface": "#f8fafb",
+                        "on-surface": "#191c1d",
+                        "on-tertiary-fixed-variant": "#005145",
+                        "on-primary-fixed": "#001847",
+                        "error-container": "#ffdad6",
+                        "primary": "#0040a1",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed": "#00201a"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #0040a1 0%, #0056d2 100%);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background">
+<div class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <header class="bg-surface-container-low shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="text-primary font-headline font-extrabold text-2xl">eDOC</span>
+                <span class="text-on-surface-variant text-sm">Patient Portal</span>
+            </div>
+            <button onclick="goBack()" class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2">
+                <span class="material-symbols-outlined">arrow_back</span>
+                Back to Dashboard
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl mx-auto w-full px-6 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Booking Form -->
+            <div class="lg:col-span-2">
+                <div class="bg-surface-container-lowest rounded-2xl shadow-md p-8">
+                    <h1 class="font-headline text-3xl font-bold text-on-surface mb-2">Book an Appointment</h1>
+                    <p class="text-on-surface-variant mb-8">Schedule a consultation with one of our healthcare professionals</p>
+
+                    <form id="bookingForm" class="space-y-6">
+                        <!-- Doctor Selection -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-semibold text-on-surface-variant ml-1">Select Doctor</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">person_white</span>
+                                <select id="doctorName" class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none" required>
+                                    <option value="">-- Select a doctor --</option>
+                                    <option value="Dr. Sarah Johnson">Dr. Sarah Johnson</option>
+                                    <option value="Dr. Michael Chen">Dr. Michael Chen</option>
+                                    <option value="Dr. Emily Rodriguez">Dr. Emily Rodriguez</option>
+                                    <option value="Dr. James Wilson">Dr. James Wilson</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Appointment Date -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-semibold text-on-surface-variant ml-1">Appointment Date</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">calendar_today</span>
+                                <input id="appointmentDate" type="date" class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none" required/>
+                            </div>
+                            <p class="text-xs text-on-surface-variant mt-1">Select a date within the next 30 days</p>
+                        </div>
+
+                        <!-- Time Slot -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-semibold text-on-surface-variant ml-1">Preferred Time</label>
+                            <div class="relative">
+                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline text-[20px]">schedule</span>
+                                <select id="timeSlot" class="w-full pl-12 pr-4 py-3.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none" required>
+                                    <option value="">-- Select time slot --</option>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="02:00 PM">02:00 PM</option>
+                                    <option value="03:00 PM">03:00 PM</option>
+                                    <option value="04:00 PM">04:00 PM</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Session Type -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-semibold text-on-surface-variant ml-1">Session Type</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="session" value="Video" checked class="w-4 h-4 text-primary"/>
+                                    <span class="text-sm">Video Consultation</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="session" value="Chat" class="w-4 h-4 text-primary"/>
+                                    <span class="text-sm">Chat Consultation</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Chief Complaint -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-semibold text-on-surface-variant ml-1">Chief Complaint (Optional)</label>
+                            <textarea id="chiefComplaint" class="w-full px-4 py-3.5 bg-surface-container-lowest border border-outline-variant/30 rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none resize-none" rows="4" placeholder="Describe your symptoms or reason for visit..."></textarea>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="flex gap-4 pt-4">
+                            <button type="button" onclick="goBack()" class="flex-1 py-3 px-6 rounded-xl border border-outline-variant/30 text-on-surface-variant font-semibold hover:bg-surface-container-low transition-colors">
+                                Cancel
+                            </button>
+                            <button type="submit" class="flex-1 primary-gradient text-white font-semibold py-3 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all active:scale-95">
+                                Book Appointment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Booking Info Card -->
+            <div class="lg:col-span-1">
+                <div class="bg-primary/5 border border-primary/20 rounded-2xl p-6 sticky top-4">
+                    <h3 class="font-headline font-bold text-lg text-on-surface mb-4">Booking Information</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <p class="text-sm text-on-surface-variant font-semibold">Appointment Duration</p>
+                            <p class="text-base text-on-surface">30 minutes</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <p class="text-sm text-on-surface-variant font-semibold">Session Start Time</p>
+                            <p class="text-base text-on-surface">5 minutes before appointment</p>
+                        </div>
+
+                        <div class="space-y-2">
+                            <p class="text-sm text-on-surface-variant font-semibold">Cancellation Policy</p>
+                            <p class="text-sm text-on-surface-variant">Cancel anytime up to 24 hours before appointment</p>
+                        </div>
+
+                        <div class="border-t border-outline-variant/20 pt-4">
+                            <p class="text-xs text-on-surface-variant">
+                                <span class="material-symbols-outlined text-sm align-middle mr-2">info</span>
+                                You will receive a confirmation email shortly
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function goBack() {
+    window.history.back();
+}
+
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user || user.role !== "patient") {
+    alert("Unauthorized access");
+    window.location.href = "login.html";
+}
+
+const form = document.getElementById("bookingForm");
+
+form.addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const doctorName = document.getElementById("doctorName").value;
+    const appointmentDate = document.getElementById("appointmentDate").value;
+    const timeSlot = document.getElementById("timeSlot").value;
+    const session = document.querySelector('input[name="session"]:checked').value;
+
+    if (!doctorName || !appointmentDate || !timeSlot) {
+        alert("Please fill all required fields");
+        return;
+    }
+
+    try {
+        const response = await fetch("http://localhost:3000/book-appointment", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                patientName: `${user.first_name}`,
+                patientEmail: user.email,
+                doctorName: doctorName,
+                date: appointmentDate,
+                timeSlot: timeSlot,
+                session: session
+            })
+        });
+
+        const data = await response.json();
+
+        if (data.status === "success") {
+            alert("Appointment booked successfully! Confirmation has been sent to your email.");
+            window.location.href = "patientdash.html";
+        } else {
+            alert("Failed to book appointment. Please try again.");
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error booking appointment. Please check your connection.");
+    }
+});
+
+// Set minimum date to today
+const dateInput = document.getElementById("appointmentDate");
+const today = new Date().toISOString().split('T')[0];
+dateInput.setAttribute('min', today);
+</script>
+</body>
+</html>

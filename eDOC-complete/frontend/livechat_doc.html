@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eDOC - Doctor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "secondary-fixed": "#cfe6f2",
+                        "on-surface-variant": "#424654",
+                        "surface-container-high": "#e6e8e9",
+                        "inverse-primary": "#b2c5ff",
+                        "secondary-fixed-dim": "#b4cad6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-container": "#5cf0d4",
+                        "surface": "#f8fafb",
+                        "tertiary-fixed-dim": "#44ddc1",
+                        "on-primary-fixed": "#001847",
+                        "secondary-container": "#cfe6f2",
+                        "surface-dim": "#d8dadb",
+                        "surface-container": "#eceeef",
+                        "primary": "#0040a1",
+                        "on-tertiary-fixed": "#00201a",
+                        "on-surface": "#191c1d",
+                        "surface-container-low": "#f2f4f5",
+                        "surface-container-highest": "#e1e3e4",
+                        "surface-bright": "#f8fafb",
+                        "tertiary-fixed": "#68fadd",
+                        "tertiary": "#005145",
+                        "inverse-on-surface": "#eff1f2",
+                        "background": "#f8fafb",
+                        "on-primary-container": "#ccd8ff",
+                        "on-secondary": "#ffffff",
+                        "outline": "#737785",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "outline-variant": "#c3c6d6",
+                        "secondary": "#4c616c",
+                        "primary-fixed": "#dae2ff",
+                        "on-secondary-fixed": "#071e27",
+                        "on-background": "#191c1d",
+                        "surface-tint": "#0056d2",
+                        "on-primary-fixed-variant": "#0040a1",
+                        "surface-variant": "#e1e3e4",
+                        "primary-container": "#0056d2",
+                        "on-error": "#ffffff",
+                        "tertiary-container": "#006b5c",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#526772",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#354a53",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary-fixed-variant": "#005145"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #e1e3e4; border-radius: 10px; }
+        .chat-bubble-patient { border-bottom-left-radius: 2px; }
+        .chat-bubble-doctor { border-bottom-right-radius: 2px; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body overflow-hidden">
+<nav class="bg-surface/80 backdrop-blur-xl shadow-sm fixed top-0 z-50 flex justify-between items-center w-full px-6 py-3 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-blue-900">eDOC</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-manrope tracking-tight font-semibold" href="#">Consultations</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-manrope tracking-tight font-semibold" href="#">Patients</a>
+<a class="text-blue-700 border-b-2 border-blue-700 pb-1 font-manrope tracking-tight font-semibold" href="#">Messages</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-manrope tracking-tight font-semibold" href="#">Schedule</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-slate-100/50 rounded-lg transition-transform duration-150 active:scale-95">
+<span class="material-symbols-outlined text-slate-600" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-100/50 rounded-lg transition-transform duration-150 active:scale-95">
+<span class="material-symbols-outlined text-slate-600" data-icon="settings">settings</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-slate-200 overflow-hidden ring-2 ring-white">
+<img alt="Doctor's profile" class="w-full h-full object-cover" data-alt="professional portrait of a confident middle-aged doctor wearing a white clinical coat and a stethoscope" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtio0lrG1FHMCWP39ukklwEhLAnGR8RAzpC4psw6jCxgPobAXJzwgJ6TBIHh9qhLj66g9s06HBpTmVtFMgDjCKJEwbqXxpVJ4t8aGLh5GB8uM6Z4irp-W_19zDOk6NJf7BW6Z6HihKYf0e-VOQZW9rwiuh4yHTg2WLEowpvrq-X5oZH7FGdF8hbnQf_xj1vuuP-qeumy-TXRSTEv4B_QYAGe9QCCAxAXEn-6f6fOB_bSUVKv9ynKegTGdFFUdS7K1wrxiGCWfXiSKJ"/>
+</div>
+</div>
+</nav>
+<main class="flex h-screen pt-[60px]">
+<aside class="bg-slate-50 h-full w-80 fixed left-0 flex flex-col pt-4 pb-6 px-4 border-r border-slate-100 z-40 overflow-y-auto">
+<div class="mb-8 px-4">
+<div class="flex items-center gap-3 mb-1">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>
+<h2 class="font-manrope font-bold text-on-surface">Active Session</h2>
+</div>
+<p class="text-xs text-slate-500 font-medium">ID: #29402-EDOC</p>
+</div>
+<div class="flex flex-col gap-2 mb-8">
+<button onclick="window.location.href='video.html?role=doctor'" class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-200/50 rounded-xl transition-all font-medium text-sm w-full text-left">
+  <span class="material-symbols-outlined">videocam</span>
+  Live Feed
+</button>
+
+<!-- INCOMING CALL POPUP — shown when patient rings -->
+<div id="incomingCallPopup" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm">
+  <div class="bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center gap-5 w-80">
+    <!-- Pulsing avatar ring -->
+    <div class="relative flex items-center justify-center">
+      <span class="absolute w-24 h-24 rounded-full bg-blue-400/20 animate-ping"></span>
+      <div class="w-20 h-20 rounded-full bg-blue-600 flex items-center justify-center z-10">
+        <span class="material-symbols-outlined text-white text-4xl">person</span>
+      </div>
+    </div>
+    <div class="text-center">
+      <p class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-1">Incoming Video Call</p>
+      <p class="font-bold text-slate-800 text-xl font-headline">Patient</p>
+      <p class="text-slate-400 text-sm mt-1">is calling you...</p>
+    </div>
+    <div class="flex gap-4 mt-2 w-full">
+      <button onclick="declineCall()" class="flex-1 py-3 bg-red-500 hover:bg-red-600 text-white rounded-2xl font-bold font-headline text-sm transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-sm">call_end</span> Decline
+      </button>
+      <button onclick="acceptCall()" class="flex-1 py-3 bg-green-500 hover:bg-green-600 text-white rounded-2xl font-bold font-headline text-sm transition-all flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-sm">call</span> Accept
+      </button>
+    </div>
+  </div>
+</div>
+<button class="flex items-center gap-3 bg-blue-50 text-blue-700 px-4 py-3 rounded-xl transition-all font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+                    Participants
+                </button>
+<button class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-200/50 rounded-xl transition-all font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+                    Clinical Notes
+                </button>
+<button class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-200/50 rounded-xl transition-all font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+                    History
+                </button>
+</div>
+<div class="px-2 mb-8">
+<h3 class="text-[10px] font-bold uppercase tracking-widest text-slate-400 mb-4 px-2">In Conversation</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-2 rounded-xl bg-surface-container-lowest">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Patient" class="w-10 h-10 rounded-full object-cover" data-alt="close up headshot of a young man with glasses and a friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp1FRew1EAiKvF1AEgydE1BKLNpRNDLAiJTIwZnNf6zRI2m3ytXM81U_msjRAUfTRrNSdrJRIRcQATZAOJlhRE_Ypm7_733_KyjThUk35usBs2CdrtkxSJc_GlPvK2yEQQ_iTyXm0GHUvDzW_qH6mEa1xZ5qb1Em0ezRa810leC5qLJnZT8RHYesetPqVMZsU_FatOgzVM6GzShZsuU5JJrVXpH9N-vusDxsCchZohFLG1GBufLxxZXqXA4TYieVuJZbtPJBeITgn5"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-white rounded-full"></span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">James Sullivan</p>
+<p class="text-[10px] text-tertiary font-bold">Patient • Online</p>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between p-2 rounded-xl">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img alt="Doctor" class="w-10 h-10 rounded-full object-cover" data-alt="professional medical headshot of a female doctor with dark hair tied back" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8-7g4MR1G4H1sljHPqPwkzL-Djye7HUC0HjKfcO24czD3N70AxgMjjy-z4fjhsBZ6DQVYYbmiur0OrnGIuBuyD2-YlKDxd7S2Dwqhruq1xJ_CHBorfkYFLEJOvxtlC9VBE-tuBYtm7L13HJ0aGtE5WFQf-3Y-jpSbawUbDbvWR_qu-ninaTK6dK67XraONyTfopoCJ1tbZ6xhtuy9elmtrAs21aG9BWmGTWu5LC6W2U9Dra7UECut_x9sUtGwtMIHCdH-rhEJlc1m"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary border-2 border-white rounded-full"></span>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Dr. Elena Rodriguez</p>
+<p class="text-[10px] text-tertiary font-bold">Primary Physician • You</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-auto space-y-4">
+<button class="w-full bg-error-container text-on-error-container py-3 rounded-xl font-bold text-sm transition-transform active:scale-95">
+                    End Consultation
+                </button>
+<button class="flex items-center gap-3 text-slate-500 px-4 py-3 hover:bg-slate-200/50 rounded-xl transition-all font-medium text-sm">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                    Support
+                </button>
+</div>
+</aside>
+<section class="ml-80 flex-1 flex flex-col bg-surface relative">
+<header class="h-16 flex items-center justify-between px-8 bg-surface-container-lowest border-b border-slate-100">
+<div class="flex gap-8">
+<button class="text-blue-700 font-bold text-sm border-b-2 border-blue-700 h-16 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="chat">chat</span>
+                        Live Chat
+                    </button>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-tertiary bg-tertiary-fixed px-3 py-1 rounded-full uppercase tracking-tighter">Encrypted</span>
+<button class="material-symbols-outlined text-slate-400 hover:text-slate-600" data-icon="more_vert">more_vert</button>
+</div>
+</header>
+<div id="chatBox" class="flex-1 overflow-y-auto px-8 py-10 space-y-8">
+<div class="flex justify-center">
+<span class="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-100 px-3 py-1 rounded-full">Today, Oct 24</span>
+</div>
+<div class="flex items-start gap-4 max-w-2xl">
+<img alt="JS" class="w-8 h-8 rounded-full mt-1" data-alt="profile of patient James Sullivan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFaQl3ejlFeZPQtVXHtV699gq5rGw7xbqInk_Pzb9-zCw-AgyghOomZFJjLuNJKoDkHyUiDqJbp5DQjKTRUVAncHcCo504Zq4AFzLq5YeezpCUL9jkcdAF7ZgD2HzNLNDoqJF_tr3dPrrSQJWaUJHUJSok9firJ8AsuQg5rftQ3XGOv9fc7x6GfB3moNzb1lvzqzk0tJRkGv8xhy1TtdobY_SgQxhybgfyDKcytnSmJQHGDzFuBqkkrlD4CiT5Jj7mjVq5tuioOUOr"/>
+<div class="space-y-1">
+<div class="bg-surface-container-low text-on-surface p-4 rounded-2xl chat-bubble-patient">
+<p class="text-sm leading-relaxed">Hello Dr. Rodriguez, I've been feeling some persistent chest tightness since our last session. It's more noticeable in the morning.</p>
+</div>
+<p class="text-[10px] text-slate-400 font-medium px-1">09:12 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-4 max-w-2xl ml-auto flex-row-reverse">
+<img alt="DR" class="w-8 h-8 rounded-full mt-1" data-alt="profile of doctor Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA63FN1piTViH-HWaSMKtEmiKRBDKm0IPkVQSh84a3MUhtxOpzYZaWL5A4-3TK20JNwrkO1K1d_ENxQYi75r_hSFZMUcyfQrbxJaPLlfeLoYmNyUGWvF8wsIpZJx1uJeT4QjL7msN_CTVHrmsR4rCcE12R5jrjn3sekmlIDtjfUbpO_5TV839XJcwr6MKuPm02Id_1x2uTkRZaFOSP99aDM1j_lA6uNAUkefPqlIPc2yD7CLmavlw8zeRdeOrjQ7LDYKc_uRSHzRtMn"/>
+<div class="space-y-1 items-end flex flex-col">
+<div class="bg-primary text-white p-4 rounded-2xl chat-bubble-doctor shadow-lg shadow-blue-500/10">
+<p class="text-sm leading-relaxed">I understand, James. Let's look at your recent heart rate data. Have you uploaded the report from your wearable device yet?</p>
+</div>
+<div class="flex items-center gap-1 px-1">
+<p class="text-[10px] text-slate-400 font-medium">09:14 AM</p>
+<span class="material-symbols-outlined text-[10px] text-tertiary" data-icon="done_all" data-weight="fill">done_all</span>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-4 max-w-2xl">
+<img alt="JS" class="w-8 h-8 rounded-full mt-1" data-alt="profile of patient James Sullivan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkyp7jzcj_vM-oCmCa97Noh14OiJNryZnGcHduoI94QeZDeu3DA6ueu8fNDcqyeeDpRxkt7CBXOFQANjMnZAYPNWnird2F3dYPO7r2x7nNAPZTrTOTfy5QlqHqINSKcYP48ACQI1YFi5elz_CwxDs89TI_2TsfdLhseAFEYXwp6AFZbrdhKmlGNIXvzIwwR_vEWWCWHdsXRahC9ZnKFEwLrXJCQhSIvIBY9lrMkJeKW7-kPViLihh9uJy-Vs9te8v5k9sGmLKhmU6t"/>
+<div class="space-y-1 w-full">
+<div class="bg-surface-container-lowest border border-slate-100 p-4 rounded-2xl shadow-sm max-w-sm">
+<div class="flex items-center gap-4 mb-3">
+<div class="w-12 h-12 rounded-xl bg-error-container/20 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-3xl" data-icon="picture_as_pdf">picture_as_pdf</span>
+</div>
+<div class="overflow-hidden">
+<p class="text-sm font-bold text-on-surface truncate">Cardiology_Report_Oct.pdf</p>
+<p class="text-[10px] text-slate-400 font-bold">2.4 MB • PDF Document</p>
+</div>
+</div>
+<button class="w-full py-2 bg-slate-50 hover:bg-slate-100 rounded-lg text-xs font-bold text-blue-700 transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+                                Download Report
+                            </button>
+</div>
+<p class="text-[10px] text-slate-400 font-medium px-1">09:16 AM</p>
+</div>
+</div>
+<div class="flex items-start gap-4 max-w-2xl ml-auto flex-row-reverse">
+<img alt="DR" class="w-8 h-8 rounded-full mt-1" data-alt="profile of doctor Elena Rodriguez" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADJ0Xn08dSCagrj9EsAYyJgHM4VEqmlq-UpOXpCSHbs93ERN7x9tRPBIBa-OMgPHq30R0pi4lQ4q7RfOW8rdcQ4oOdeDJzh6MXAXFR3B3BaLluCErtPEh3Y8OQr3vbpJ3OLmWG9QKY6tjyNd5TNwIs0q-I8sGG6EhGAMzdG6BRt4LrsykCpFbyQQ7LwcrxJNpi9irzwcuzz-jIEjU1Dvh3KG0tV85FgoMOmLzUxeErB94oYJhLyO8WpxnZpu8VgBpUI4c5-U9Au93B"/>
+<div class="space-y-1 items-end flex flex-col">
+<div class="bg-primary text-white p-4 rounded-2xl chat-bubble-doctor shadow-lg shadow-blue-500/10">
+<p class="text-sm leading-relaxed">Thank you. I'm reviewing it now. The rhythm seems steady, but I notice some elevation in your resting BPM. Are you experiencing any dizziness?</p>
+</div>
+<div class="flex items-center gap-1 px-1">
+<p class="text-[10px] text-slate-400 font-medium">09:17 AM</p>
+<span class="material-symbols-outlined text-[10px] text-tertiary" data-icon="done_all" data-weight="fill">done_all</span>
+</div>
+</div>
+</div>
+</div>
+<footer class="p-6 bg-surface">
+<div class="max-w-4xl mx-auto relative">
+<div class="absolute -top-12 left-0 flex gap-2">
+</div>
+<div class="bg-surface-container-lowest shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-slate-100 rounded-3xl p-2 flex items-center gap-2">
+<button class="p-3 text-slate-400 hover:text-blue-600 hover:bg-slate-50 rounded-2xl transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<input id="messageInput" class="flex-1 ..." placeholder="Type your message here..." type="text"/>
+<div class="flex items-center gap-1">
+<button class="p-3 text-slate-400 hover:text-blue-600 hover:bg-slate-50 rounded-2xl transition-all">
+<span class="material-symbols-outlined" data-icon="mood">mood</span>
+</button>
+<button id="sendBtn" class="bg-primary text-white w-12 h-12 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</section>
+</main>
+<div class="fixed bottom-6 left-1/2 -translate-x-1/2 w-fit min-w-[320px] px-8 py-2 flex gap-8 items-center justify-center z-50 rounded-full bg-white/90 backdrop-blur-2xl shadow-[0_-4px_40px_rgba(0,0,0,0.04)] border border-slate-100/50">
+</div>
+<script src="http://localhost:5000/socket.io/socket.io.js">
+</script>
+<script src="http://localhost:5000/socket.io/socket.io.js"></script>
+<script>
+  const socket = io("http://localhost:5000");
+  const input = document.getElementById("messageInput");
+  const sendBtn = document.getElementById("sendBtn");
+  const chatBox = document.getElementById("chatBox");
+
+  const ME = "doctor"; // 👈 This page is the DOCTOR
+
+  const AVATARS = {
+    patient: "https://lh3.googleusercontent.com/aida-public/AB6AXuCFaQl3ejlFeZPQtVXHtV699gq5rGw7xbqInk_Pzb9-zCw-AgyghOomZFJjLuNJKoDkHyUiDqJbp5DQjKTRUVAncHcCo504Zq4AFzLq5YeezpCUL9jkcdAF7ZgD2HzNLNDoqJF_tr3dPrrSQJWaUJHUJSok9firJ8AsuQg5rftQ3XGOv9fc7x6GfB3moNzb1lvzqzk0tJRkGv8xhy1TtdobY_SgQxhybgfyDKcytnSmJQHGDzFuBqkkrlD4CiT5Jj7mjVq5tuioOUOr",
+    doctor: "https://lh3.googleusercontent.com/aida-public/AB6AXuA63FN1piTViH-HWaSMKtEmiKRBDKm0IPkVQSh84a3MUhtxOpzYZaWL5A4-3TK20JNwrkO1K1d_ENxQYi75r_hSFZMUcyfQrbxJaPLlfeLoYmNyUGWvF8wsIpZJx1uJeT4QjL7msN_CTVHrmsR4rCcE12R5jrjn3sekmlIDtjfUbpO_5TV839XJcwr6MKuPm02Id_1x2uTkRZaFOSP99aDM1j_lA6uNAUkefPqlIPc2yD7CLmavlw8zeRdeOrjQ7LDYKc_uRSHzRtMn"
+  };
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function renderMessage(msg) {
+    const isMine = msg.sender === ME; // true = RIGHT side, false = LEFT side
+    const time = msg.time
+      ? new Date(msg.time).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
+      : new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+    const wrapper = document.createElement("div");
+    wrapper.className = `flex items-start gap-4 max-w-2xl ${isMine ? "ml-auto flex-row-reverse" : ""}`;
+
+    if (isMine) {
+      // MY message → RIGHT side, BLUE bubble
+      wrapper.innerHTML = `
+        <img alt="me" class="w-8 h-8 rounded-full mt-1 object-cover" src="${AVATARS[ME]}"/>
+        <div class="space-y-1 items-end flex flex-col">
+          <div class="bg-primary text-white p-4 rounded-2xl chat-bubble-doctor shadow-lg shadow-blue-500/10">
+            <p class="text-sm leading-relaxed">${escapeHtml(msg.text)}</p>
+          </div>
+          <div class="flex items-center gap-1 px-1">
+            <p class="text-[10px] text-slate-400 font-medium">${time}</p>
+            <span class="material-symbols-outlined text-[10px] text-tertiary">done_all</span>
+          </div>
+        </div>
+      `;
+    } else {
+      // THEIR message → LEFT side, GREY bubble
+      const other = ME === "doctor" ? "patient" : "doctor";
+      wrapper.innerHTML = `
+        <img alt="them" class="w-8 h-8 rounded-full mt-1 object-cover" src="${AVATARS[other]}"/>
+        <div class="space-y-1">
+          <div class="bg-surface-container-low text-on-surface p-4 rounded-2xl chat-bubble-patient">
+            <p class="text-sm leading-relaxed">${escapeHtml(msg.text)}</p>
+          </div>
+          <p class="text-[10px] text-slate-400 font-medium px-1">${time}</p>
+        </div>
+      `;
+    }
+
+    chatBox.appendChild(wrapper);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }
+
+  // ── Incoming call handling ──────────────────────────────────────────────
+  socket.on("call-ringing", () => {
+    document.getElementById("incomingCallPopup").classList.remove("hidden");
+  });
+
+  socket.on("call-cancelled", () => {
+    document.getElementById("incomingCallPopup").classList.add("hidden");
+  });
+
+  function acceptCall() {
+    document.getElementById("incomingCallPopup").classList.add("hidden");
+    socket.emit("call-accepted");          // tell patient
+    window.location.href = "video.html?role=doctor";
+  }
+
+  function declineCall() {
+    document.getElementById("incomingCallPopup").classList.add("hidden");
+    socket.emit("call-declined");          // tell patient
+  }
+
+  function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    socket.emit("chat message", { text, sender: ME }); // sends as "doctor"
+    input.value = "";
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  });
+
+  socket.on("chat message", (msg) => { renderMessage(msg); });
+</script>
+</body></html>
